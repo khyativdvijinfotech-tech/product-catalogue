@@ -5,7 +5,29 @@
 
 h1 {
   text-align: center;
+}
+
+.page-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   margin-bottom: 30px;
+}
+
+.page-header h1 {
+  grid-column: 2;
+  margin: 0;
+}
+
+.page-navigation-button {
+  grid-column: 3;
+  justify-self: end;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 5px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
 }
 
 .product-list {
@@ -58,6 +80,100 @@ h1 {
   cursor: pointer;
 }
 
+.cart {
+  margin-bottom: 25px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: white;
+}
+
+.cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cart-heading h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.cart-items {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.cart-product-info {
+  flex: 1;
+}
+
+.cart-product-info h3,
+.cart-product-info p,
+.cart-line-total {
+  margin: 4px 0;
+}
+
+.cart-product-info h3 {
+  font-size: 16px;
+}
+
+.cart-product-info p {
+  color: #555;
+}
+
+.cart-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-quantity button,
+.product-card button,
+.clear-cart,
+.remove-cart-item {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  cursor: pointer;
+}
+
+.product-card button {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: white;
+}
+
+.remove-cart-item {
+  color: #b91c1c;
+}
+
+.cart-total {
+  margin: 16px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .product-list {
     grid-template-columns: repeat(2, 1fr);
@@ -65,6 +181,21 @@ h1 {
 }
 
 @media (max-width: 500px) {
+  .page-header {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .page-header h1 {
+    grid-column: 1;
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .page-navigation-button {
+    grid-column: 2;
+  }
+
   .product-list {
     grid-template-columns: 1fr;
   }
@@ -73,5 +204,14 @@ h1 {
 @media (max-width: 500px) {
   .search-filter {
     flex-direction: column;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .cart-line-total {
+    margin-left: auto;
   }
 }
