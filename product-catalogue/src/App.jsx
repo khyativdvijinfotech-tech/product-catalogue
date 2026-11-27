@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import products from "./data/products.json";
+import { useTheme } from "./ThemeContext";
+import ThemeToggle from "./ThemeToggle";
 import "./App.css";
 
 const cartStorageKey = "product-catalogue-cart";
@@ -36,6 +38,7 @@ function loadCart() {
 }
 
 function App() {
+  const { theme } = useTheme();
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
   const [priceRange, setPriceRange] = useState("all");
@@ -109,18 +112,21 @@ function App() {
   });
 
   return (
-    <div className="container">
+    <div className={`container ${theme}-theme`}>
       <header className="page-header">
         <h1>{isCartPage ? "Your Cart" : "Product Catalogue"}</h1>
-        {isCartPage ? (
-          <button type="button" className="page-navigation-button" onClick={openCatalogue}>
-            Continue Shopping
-          </button>
-        ) : (
-          <button type="button" className="page-navigation-button" onClick={openCart}>
-            Cart ({cartItemCount})
-          </button>
-        )}
+        <div className="header-actions">
+          <ThemeToggle />
+          {isCartPage ? (
+            <button type="button" className="page-navigation-button" onClick={openCatalogue}>
+              Continue Shopping
+            </button>
+          ) : (
+            <button type="button" className="page-navigation-button" onClick={openCart}>
+              Cart ({cartItemCount})
+            </button>
+          )}
+        </div>
       </header>
       {isCartPage ? (
         <section className="cart" aria-labelledby="cart-title">
